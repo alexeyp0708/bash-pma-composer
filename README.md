@@ -1,6 +1,6 @@
 # Universal Installer
 
-Simple but powerful installer for adaptation to different distributions
+Simple but powerful installer for adaptation to different OS.
 
 The goal of the project is to unify the installation of packages for different operating systems.
 
