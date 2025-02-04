@@ -8,8 +8,7 @@ The script also aims to personalize application installations.
 
 ## Syntax rules:
 
-- The prefix "_" in the script name (`_my_script.sh`) means that the script is not executable. the first line of such scripts is `##!/bin/bash` 
-and is intended only for extending current scripts (`source _myscript.sh;`);
+- The prefix "_" in the script name (`_my_script.sh`) means that the script is not executable. The first line of such scripts is `##!/bin/bash`.   Is intended only for extending current scripts (`source _myscript.sh;`);
 -  The prefix "_" in the function name (`_my_function`) means that the functions are private and can be modified in the future.
 It is not recommended to use them in your scripts.;
 
@@ -151,7 +150,7 @@ You must create the following custom files:
 - `./{distr}/{_your_installer_distributive_script}.sh` implement `./interfaces/{_your_command_interface}.sh` (optional)
 
 ### {distr}
-`{distr}` - This is the path directory to distribution installers scripts
+`{distr}` - This is thed irectory path  to distribution installers scripts
 It can be changed by changing the `$distr_file` variable in `./composr.sh`  and `./iOSThenRun.sh` files.
 `$distr_file` - path file to distribution installers script.
 default directory path - `./distr`
@@ -159,11 +158,9 @@ default directory path - `./distr`
 ### ./{distr}/required.sh
 
 Depending on the project rules, these methods in file `./{distr}/required.sh` can be adjusted, 
-and `./_composer.sh` depends on them.
+ `./_composer.sh` depends on methods in file `./{distr}/required.sh`.
 You can create your own file `./distr/required.sh` implementing the interface `./interfaces/_required_interface.sh`
 The directory will correspond to the path specified in the `$distr_file` variable in `./composer.sh`.
-
-Next you need to create a `./composer.sh` file
 
 ### ./composer.sh
 
@@ -175,8 +172,6 @@ source ./_composer.sh
 ##Change if necessary
 #os="$(cat "/etc/os-release"|grep -Po "(?<=^ID=).+$")"
 #distr_file="./distr/_${os}.sh"
-
-
 
 ## add methods on format name - [command]_[app] [$@=...options]  if necessary
 
@@ -247,5 +242,5 @@ add(){
 }
 ## your any methods as commands
 ```
-This approach helps to declare the necessary commands in the necessary scripts.
+This approach helps to declare the necessary commands for the distribution installers scripts.
 
