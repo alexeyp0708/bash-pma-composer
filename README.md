@@ -25,7 +25,9 @@ But you can specify your own path to the operating system installer file and set
 
 ### Use Composer for default installation management scripts
 
-Detect OS : "/etc/os-release: {ID}"
+Detect OS : "/etc/os-release: {ID}"   
+
+
 Example of a default software builder for OS = debian
 
 ./composer.sh
@@ -37,7 +39,7 @@ Example of a default software builder for OS = debian
 source "$(dirname $(readlink -f "$BASH_SOURCE"))/Installer/src/_composer.sh"
 
 # rule name function  [command]_[app_name] 
-# argumens it is options script
+# argumens it is script options 
 
 install_nginx(){
   local options="$@"
@@ -112,7 +114,7 @@ Run
 # Running `./composer.sh => add_nginx -y"
 ./composer.sh -y add nginx
 #Running 
-# Running  `./distr/_other.sh => initOptions -y` and `./distr/_other.sh => add nano`
+# Running  `./composer.sh  => initOptions -y` and `./distr/_other.sh => add nano`
 ./composer.sh -y add nano
 ```
 
