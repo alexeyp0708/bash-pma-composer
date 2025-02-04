@@ -1,4 +1,4 @@
-# Package Installer
+# Universal Installer
 
 Simple but powerful installer for adaptation to different distributions
 
