@@ -1,5 +1,5 @@
 ##!/bin/bash
-source "$(dirname $(readlink -f "$BASH_SOURCE"))/../../../interfaces/_os_interface.sh"
+#source "$(dirname $(readlink -f "$BASH_SOURCE"))/../../../interfaces/_os_interface.sh"
 local optsNoVal
 initOptions(){
   local options="$(getopt -n _test -o yfgv  -- "$@")"

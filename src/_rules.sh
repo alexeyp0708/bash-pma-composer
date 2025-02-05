@@ -1,8 +1,7 @@
 #!/bin/bash
-
-source "$(dirname $(readlink -f "$BASH_SOURCE"))/interfaces/_rules_interface.sh"
-
-help(){
+_rules (){
+  #source "$(dirname $(readlink -f "$BASH_SOURCE"))/interfaces/_rules_interface.sh"
+  help(){
     cat <<eof
   composer [-y | -f | -q | -v] command [...apps]
   Options:
@@ -20,14 +19,17 @@ help(){
   [ upgrade ] - Update the application
 eof
   }
-    
-validateOptions(){
-    local name="${FUNCNAME[1]}"
-    local optstring="$(getopt -n $name  -o yfqv  -- "$@")"
-    echo "$optstring"
+      
+  validateOptions(){
+      local name="${FUNCNAME[1]}"
+      local optstring="$(getopt -n $name  -o yfqv  -- "$@")"
+      echo "$optstring"
+  }
+  
+  "$@"
 }
 
-"$@"
+
 
 
 

@@ -26,6 +26,8 @@ The script will download the necessary scripts and create templates for writing 
 >WARNING: To speed up the script, the adapter (`./adapters/_{OS}.sh`), application actions(`./library/_core.sh` and `./library/_{OS}.sh`)
 and composer (./composer.sh) are included in one file. This means they have the same scope.  
 Be careful with declaring variables in such files. They may overlap and override each other.
+
+
 ### Creating an adapter for the package manager.
 
 ./{your_directory}/adapters/_{yor_OS}.sh
@@ -60,6 +62,7 @@ run
 
 
 ### Creating actions for applications.
+
 >Note: To speed up the script, the adapter, application actions, and composer are included in one file. 
 Therefore, application actions can be declared in the adapter script.
 
@@ -161,12 +164,23 @@ or you can create your own rules script.
 
 ### Creating your own script with rules
 
-./my-rules.sh
+./_my-rules.sh
 ```shell
 ##!/bin/bash
-source "$(dirname $(readlink -f "$BASH_SOURCE"))/../interfaces/_rules_interface.sh"
+_rules(){
+  source "$(dirname $(readlink -f "$BASH_SOURCE"))/../interfaces/_rules_interface.sh"
+  # implement the methods of the interface _rules_interface.sh
+  help(){
+    #....
+  }
+  validateRules(){
+    #....
+  }
+}
 
-# implement the methods of the interface _rules_interface.sh
+
+
+
 ```
 
 ./_config.sh
@@ -174,7 +188,7 @@ source "$(dirname $(readlink -f "$BASH_SOURCE"))/../interfaces/_rules_interface.
 ##!/bin/bash
 #....
 # set the RULES_SCRIPT variable
-RULES_SCRIPT="$(dirname $(readlink -f "$BASH_SOURCE"))/my-rules.sh"
+RULES_SCRIPT="$(dirname $(readlink -f "$BASH_SOURCE"))/_my-rules.sh"
 #....
 ```
 

@@ -6,12 +6,13 @@ mkdir -p $dir/interfaces
 mkdir -p $dir/library
 
 wget -O $dir/composer.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/composer.sh
-wget -O $dir/rules.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/rules.sh
-wget -O $dir/run-lib.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/run-lib.sh
+wget -O $dir/_rules.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/_rules.sh
+#wget -O $dir/run-lib.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/run-lib.sh
 wget -O $dir/ifOSThenRun.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/ifOSThenRun.sh
 wget -O $dir/_config.sh -q https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/_config.sh
 
 wget -q -O  $dir/interfaces/_interface.sh https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/interfaces/_interface.sh
+wget -q -O  $dir/interfaces/_adapter_interface.sh https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/interfaces/_adapter_interface.sh
 wget -q -O $dir/interfaces/_rules_interface.sh https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/interfaces/_rules_interface.sh
 wget -q -O $dir/interfaces/_os_interface.sh https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/src/interfaces/_os_interface.sh
  

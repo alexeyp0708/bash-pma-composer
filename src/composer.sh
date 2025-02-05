@@ -18,6 +18,7 @@ run (){
   }
   _run (){
     #source "$(dirname $(readlink -f "$0"))/_config.sh"
+    source "$RULES_SCRIPT"
     _fail(){
       printf '%s\n' "Error: $1" >&2 
       exit ${2-1}
@@ -30,10 +31,10 @@ run (){
       fi  
     }
     
-    _rules(){
-        local rules="$RULES_SCRIPT"
-        $rules "$@"
-    }
+    #_rules(){
+    #    local rules="$RULES_SCRIPT"
+    #    $rules "$@"
+    #}
     # _spilt_options name_opts name_params ...optionsAndParams 
     _spilt_options(){
         local -n optsVar="$1"
