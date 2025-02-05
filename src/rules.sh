@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$(dirname $(readlink -f "$BASH_SOURCE"))/../interfaces/_required_interface.sh"
+source "$(dirname $(readlink -f "$BASH_SOURCE"))/interfaces/_rules_interface.sh"
 
 help(){
     cat <<eof

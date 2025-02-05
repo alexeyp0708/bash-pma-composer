@@ -1,13 +1,6 @@
-##!/bin/bash
+#!/bin/bash
 
-#The file is abstract and is designed to expand another file through "source"
-#The expanding script should have functions starting from the prefix install_ or uninstall_
-
-
-composer_script_path=$(dirname $(readlink -f "$BASH_SOURCE"))
-os="$(cat "/etc/os-release"|grep -Po "(?<=^ID=).+$")"
-distr_file="${composer_script_path}/distr/_${os}.sh"
-
+source "$(dirname $(readlink -f "$0"))/_config.sh"
 _fail(){
   printf '%s\n' "Error: $1" >&2 
   exit ${2-1}
@@ -16,14 +9,14 @@ _fail(){
 _check_help(){
   if [ "$(echo "$@" |grep -P -o "\-\- [']?help[']?(?:\s|$)")" ]
   then
-   _required help
+   _rules help
    exit 0
   fi  
 }
 
-_required(){
-    local required="$(dirname $(readlink -f "$distr_file"))/required.sh"
-    $required "$@"
+_rules(){
+    local rules="$RULES_SCRIPT"
+    $rules "$@"
 }
 # _spilt_options name_opts name_params ...optionsAndParams 
 _spilt_options(){
@@ -35,11 +28,11 @@ _spilt_options(){
 }
 
 _validate_options(){
-  _required validateOptions "$@"
+  _rules validateOptions "$@"
 }
 
 _external_execute() {
-  source "$distr_file"
+  source "$PROVIDER_SCRIPT"
   local command  options params
   _spilt_options options params "$@"
   eval set -- "$params"
@@ -53,6 +46,7 @@ _external_execute() {
 }
 
 _internal_execute(){
+  local lib="$RUN_LIB_SCRIPT";
   local command method options params
   _spilt_options options params "$@"
   eval set -- "$params"
@@ -61,11 +55,12 @@ _internal_execute(){
   for app in "$@"
   do
     method=${command}_$app
-    $method $options
+    $lib $method $options
   done
 }
 
 execute(){
+  local lib="$RUN_LIB_SCRIPT";
   local command  options params internal external app
   local str_opts="$(_validate_options "$@")"
   _check_help "$str_opts"
@@ -75,7 +70,7 @@ execute(){
   shift
   for app in "$@"
   do
-    if [[ "$(type -t "${command}_$app")" == "function" ]]
+    if [[ "$($lib check ${command}_$app)" == "ok" ]]
     then
         internal="$internal $app" 
     else
@@ -92,12 +87,5 @@ execute(){
     _internal_execute $options -- $command $internal
   fi
 }
-
-composer (){
-   local str_opts="$(_validate_options "$@")"
-  _check_help "$str_opts"
-  _external_execute "$str_opts"
-}
-
-
-
+#WARN:There should be no  lines after the command.
+execute "$@"
