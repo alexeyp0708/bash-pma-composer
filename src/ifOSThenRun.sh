@@ -7,7 +7,7 @@ run(){
   shift
   if [ "$type" == "$OS" ]
   then
-    if [ -e "$PROVIDER_SCRIPT" ];then source "$PROVIDER_SCRIPT"; fi
+    if [ -e "$ADAPTER_SCRIPT" ];then source "$ADAPTER_SCRIPT"; fi
     if [ "$(type -t "execute")" == "function" ]
     then
       execute "$@"

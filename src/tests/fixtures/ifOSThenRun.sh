@@ -5,7 +5,7 @@ source <(cat "$(dirname $(readlink -f "$0"))/../../ifOSThenRun.sh" | sed '$d')
 #source "./../../ifOSThenRun.sh"
 if [ "$1" == "test" ]
 then
-  PROVIDER_SCRIPT="./provider/no_file.sh"
+  ADAPTER_SCRIPT="./provider/no_file.sh"
 fi  
 if [ "$1" == "test2" ]
 then 

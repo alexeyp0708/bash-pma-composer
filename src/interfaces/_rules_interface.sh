@@ -1,4 +1,7 @@
 ##!/bin/bash
+
+source "$(dirname $(readlink -f "$BASH_SOURCE"))/_interface.sh"
+
 # Description commands and options 
 # print - text
 help(){

@@ -32,7 +32,7 @@ _validate_options(){
 }
 
 _external_execute() {
-  source "$PROVIDER_SCRIPT"
+  source "$ADAPTER_SCRIPT"
   local command  options params
   _spilt_options options params "$@"
   eval set -- "$params"

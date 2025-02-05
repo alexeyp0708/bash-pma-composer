@@ -1,6 +1,6 @@
 ##!/bin/bash
 
-source "$(dirname $(readlink -f "$BASH_SOURCE"))/_interface.sh"
+source "$(dirname $(readlink -f "$BASH_SOURCE"))/_adapter_interface.sh"
 
 init() {
   _fail
