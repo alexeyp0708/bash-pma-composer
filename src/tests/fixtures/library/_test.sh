@@ -12,3 +12,7 @@ test_optionsNoVal_app(){
 test_optionsNoVal_app2(){
   echo "test_optionsNoVal_app2 $@"
 }
+
+test_run_composer_app(){
+  composer test_method hello
+}

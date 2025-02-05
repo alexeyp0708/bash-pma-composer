@@ -23,6 +23,9 @@ To deploy your own project:
 
 The script will download the necessary scripts and create templates for writing your own scripts.
 
+>WARNING: To speed up the script, the adapter (`./adapters/_{OS}.sh`), application actions(`./library/_core.sh` and `./library/_{OS}.sh`)
+and composer (./composer.sh) are included in one file. This means they have the same scope.  
+Be careful with declaring variables in such files. They may overlap and override each other.
 ### Creating an adapter for the package manager.
 
 ./{your_directory}/adapters/_{yor_OS}.sh
@@ -57,6 +60,8 @@ run
 
 
 ### Creating actions for applications.
+>Note: To speed up the script, the adapter, application actions, and composer are included in one file. 
+Therefore, application actions can be declared in the adapter script.
 
 Create 
 `./{your_directory}/library/_core.sh`

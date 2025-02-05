@@ -1,6 +1,6 @@
 #!/bin/bash
-test_script="$(readlink -f "$BASH_SOURCE")"
-test_script_path="$(dirname $test_script)"
-ifOSThenRun="$test_script_path/fixtures/ifOSThenRun.sh"
+test_composer_script="$(readlink -f "$BASH_SOURCE")"
+test_composer_script_path="$(dirname $test_composer_script)"
+composer="$test_composer_script_path/fixtures/composer.sh"
 
-$ifOSThenRun test echo "hello"
+$composer "test_method" "app"

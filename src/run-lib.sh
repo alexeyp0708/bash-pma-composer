@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# deprecated
 source "$(dirname $(readlink -f "$0"))/_config.sh"
 
 path="$LIB_DIR"
@@ -12,13 +12,10 @@ fi
 if [[ ! -z "$OS" && "$OS" != 'core' && -e "$path/_${OS}.sh" ]]
 then
   source "$path/_${OS}.sh"
-fi  
-composer (){
-  source <(cat "$(dirname $(readlink -f "$0"))/composer.sh" | sed '$d')
-   local str_opts="$(_validate_options "$@")"
-  _check_help "$str_opts"
-  _external_execute "$str_opts"
-}  
+fi 
+
+source <(cat "$(dirname $(readlink -f "$BASH_SOURCE"))/composer.sh" | sed '$d') 
+
 check() {
   if [[ "$(type -t "$1")" == "function" ]]
   then
@@ -27,5 +24,14 @@ check() {
     return 1
   fi
 }
-
+run (){
+  local  action options params
+  _spilt_options options params "$@"
+  eval set -- "$params"
+  for action in "$@"
+  do
+     $action $options
+  done
+}
 "$@"
+
