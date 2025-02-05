@@ -3,10 +3,10 @@
 source "$(dirname $(readlink -f "$BASH_SOURCE"))/_interface.sh"
 
 initOptions(){
-  _interface_fail 
+  _fail 
 }
 
 execute(){
-  "_interface_fail@"
+  "$@"
 }
 

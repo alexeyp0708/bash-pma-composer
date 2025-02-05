@@ -32,7 +32,7 @@ fi
 if [ ! -e "$dir/library/_core.sh" ]
 then
 cat <<eof > $dir/library/_core.sh
-#!/bin/bash
+##!/bin/bash
 
 # Common set of actions for any OS
 # Create your own actions
@@ -45,7 +45,7 @@ fi
 if [ ! -e "$dir/library/_${OS}.sh" ]
 then
 cat <<eof > $dir/library/_${OS}.sh
-#!/bin/bash
+##!/bin/bash
 
 # Set of actions for ${OS} OS
 # Create your own actions
@@ -55,7 +55,7 @@ cat <<eof > $dir/library/_${OS}.sh
 eof
 fi
 
-<<EOF
+cat <<EOF
 --------------------------
 "NOTE: Open the '$dir/adapters/_${OS}.sh' file 
 and create adapter methods [ initOptions | install | uninstall | update | upgrade ]

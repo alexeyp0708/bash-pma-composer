@@ -3,20 +3,20 @@
 source "$(dirname $(readlink -f "$BASH_SOURCE"))/_adapter_interface.sh"
 
 init() {
-  _interface_fail
+  _fail
 }
 install (){
-  _interface_fail
+  _fail
 }
 
 uninstall(){
-  _interface_fail
+  _fail
 }
 
 update(){
-  _interface_fail
+  _fail
 }
 
 upgrade(){
-  _interface_fail
+  _fail
 }

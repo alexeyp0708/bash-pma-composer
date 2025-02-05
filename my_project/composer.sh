@@ -13,17 +13,13 @@ run (){
   
   source "$ADAPTER_SCRIPT"
   
-  _fail(){
-    printf '%s\n' "Error: $1" >&2 
-    exit ${2-1}
-  }
   composer(){
     _run composer "$@"
   }
   _run (){
     #source "$(dirname $(readlink -f "$0"))/_config.sh"
     source "$RULES_SCRIPT"
-
+    
     _check_help(){
       if [ "$(echo "$@" |grep -P -o "\-\- [']?help[']?(?:\s|$)")" ]
       then
@@ -56,6 +52,10 @@ run (){
       eval set -- "$params"
       command=$1
       shift
+      if [ ! -z "$options" ] 
+      then
+         initOptions $options 
+      fi
       $command "$@"
     }
     
@@ -73,7 +73,7 @@ run (){
       eval set -- "$params"
       for action in "$@"
       do
-        $action $options
+         $action $options
       done
     }
     
@@ -95,7 +95,6 @@ run (){
       eval set -- "$params"
       command=$1
       shift
-
       for app in "$@"
       do
         if [[ "$(_check_action ${command}_$app)" == "ok" ]]
@@ -105,10 +104,7 @@ run (){
             external="$external $app"
         fi
       done
-      if [ ! -z "$options" ] 
-      then
-         initOptions $options 
-      fi
+      
       if [[ ! -z "$external" || -z "$@" ]]
       then
         _external_execute $options -- $command $external
