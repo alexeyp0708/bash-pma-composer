@@ -10,10 +10,11 @@ The goal of the project is to quickly write server scripts for installing progra
 It is not recommended to use them in your scripts.;
 
 ## Definitions
-Methods - script functions
-Interfaces - non-executable scripts with declaration of methods that need to be implemented in the executable script.
-Adapters - scripts adapted for the OS package manager.
-Actions - scripts designed for various actions with the application and designed for specific behavior (example nstallation or configuration)
+
+Methods - script functions  
+Interfaces - non-executable scripts with declaration of methods that need to be implemented in the executable script.  
+Adapters - scripts adapted for the OS package manager.  
+Actions - scripts designed for various actions with the application and designed for specific behavior (example nstallation or configuration)  
 
 ## Project creation
 
@@ -154,9 +155,9 @@ source "$(dirname $(readlink -f "$BASH_SOURCE"))/../interfaces/_os_actions_inter
 ```
 
 ## Fine-tuning - Changing options and command descriptions
-To change the description of commands when calling `./composer.sh help`, change  the `help` method of  `./rules.sh` method 
+To change the description of commands when calling `./composer.sh help`, change  the `help` method of  `./rules.sh` script 
 or you can create your own rules script.
-To change the format of options, change the `validateOptions` method of `./rules.sh`
+To change the format of options, change the `validateOptions` method of `./rules.sh` script
 or you can create your own rules script.
 
 ### Creating your own script with rules
