@@ -71,7 +71,7 @@ run
 ### Creating actions for applications.
 
 >Note: To speed up the script, the adapter, application actions, and composer are included in one file. 
-Therefore, application actions can be declared in the adapter script.
+Therefore, application actions can be declared in the adapter script (`./{your_directory}/adapters/_{yor_OS}.sh`).
 
 Create 
 `./{your_directory}/library/_core.sh`
