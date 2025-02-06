@@ -1,4 +1,4 @@
-# BASH Composer - Universal Package Management Adapter
+# Package Management Adapter (or PMA Composer)
 
 Simple but powerful adapter of package managers of different OS.
 The goal of the project is to quickly write server scripts for installing programs and configuring them on various operating systems.
