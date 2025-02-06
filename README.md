@@ -55,6 +55,10 @@ initOptions(){
   # You have to build your own combinations of options depending on the package manager.
   opt_str="$@"
 }
+formatOptions(){
+   # formating raw options '$@' and pring formated options
+   # The method is declarative and is not used in the composr.sh script. Will be useful for application actions
+}
 install(){
   sudo apt-get $opt_str install $@
 }
@@ -164,6 +168,7 @@ source "$(dirname $(readlink -f "$BASH_SOURCE"))/../interfaces/_os_actions_inter
 ```
 
 ## Fine-tuning - Changing options and command descriptions
+
 To change the description of commands when calling `./composer.sh help`, change  the `help` method of  `./rules.sh` script 
 or you can create your own rules script.
 To change the format of options, change the `validateOptions` method of `./rules.sh` script
