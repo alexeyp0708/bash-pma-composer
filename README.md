@@ -18,9 +18,15 @@ Actions - scripts designed for various actions with the application and designed
 
 ## Project creation
 
-To deploy your own project:
-- download `./create-project.sh`
-- run the command `./create-project.sh {your_directory}`
+Run templte command:
+ ```shell
+ bash <(wget -qO - https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/create-project.sh) $(pwd)/{$your_project_directory}
+```
+or 
+```shell
+bash <(curl -Ls https://raw.githubusercontent.com/alexeyp0708/bash_universal_installer/refs/heads/main/create-project.sh) {$your_project_directory}
+```
+Replace `{$your_project_directory}` to the directory of your project.
 
 The script will download the necessary scripts and create templates for writing your own scripts.
 
